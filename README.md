@@ -35,7 +35,7 @@ Then, close and re-open your terminal window and run ```which mamba``` to see if
 
 [Environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment)
 
-Run ```mamba activate myenv.yml``` to install the environment.
+Run ```conda activate env_api``` to activate the environment.
 
 <a name="definitions"></a>
 
