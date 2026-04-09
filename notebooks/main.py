@@ -32,6 +32,15 @@ headers = {
     'api-key': api_key
 }
 
+url = 'https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/NM_021803.4?api-key=api_key'
+
+r = requests.get(url, headers = headers)
+##print(r.json())
+
+
+dictionary = r.json()
+for k in dictionary.keys():
+    print(k) 
 
 
 ##############################
