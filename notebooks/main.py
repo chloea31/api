@@ -28,6 +28,12 @@ import json
 load_dotenv()
 api_key = os.getenv("API_KEY")
 
+headers = {
+    'api-key': api_key
+}
+
+
+
 ##############################
 ### Main body of the script
 ##############################
