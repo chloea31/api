@@ -30,7 +30,6 @@ Examples:
 
 ![alt text](2026_04_23_api_definition.pdf)
 
-
 <a name="req"></a> 
 
 ## Requirements
