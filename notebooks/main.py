@@ -32,15 +32,20 @@ headers = {
     'api-key': api_key
 }
 
-url = 'https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/NM_021803.4?api-key=api_key'
+#url = 'https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/NM_021803.4?api-key=api_key'
+url = 'https://api.ncbi.nlm.nih.gov/datasets/v2/gene/id/2?api-key=api_key/orthologs'
 
 r = requests.get(url, headers = headers)
-##print(r.json())
+print(r.json())
 
 
-dictionary = r.json()
-for k in dictionary.keys():
-    print(k) 
+#dictionary = r.json()
+#for k in dictionary.keys():
+    #print(k) 
+
+
+#def info_gene(siren): # The definition of a function often includes a list of parameters. 
+    # These a always VARIABLES, which will receive their value when the function will be called.
 
 
 ##############################
