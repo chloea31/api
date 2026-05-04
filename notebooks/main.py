@@ -18,6 +18,7 @@ from dotenv import load_dotenv
 import os
 import csv
 import json
+import urllib
 ##import numpy as np
 ##import pandas as pd
 
@@ -71,12 +72,36 @@ def info_accession(list_accession_nb): # The definition of a function often incl
     # These a always VARIABLES, which will receive their value when the function will be called.
 
     print(list_accession_nb)
-    url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/" + list_accession_nb
+    url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/"
+    result = ",".join(list_accession_nb)
+    url_encoded = urllib.parse.urlencode(result)
+    r = requests.get(url_encoded, headers = headers)
+    dictionary = r.json()
+    return dictionary
+#print(info_accession("NM_021803.4"))
+print((info_accession(["NP_068575.1", "NP_851564.1"])))
+
+def info_gene(gene_id): 
+    # provide an integer (cf. NCBI REST API documentation:https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/rest-api/#)
+
+    print(gene_id)
+    url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/id/" + gene_id
     r = requests.get(url, headers = headers)
     dictionary = r.json()
     return dictionary
-print(info_accession("NM_021803.4"))
-#print((info_accession(["NP_068575.1", "NP_851564.1"])))
+dictionary = info_gene("2")
+
+#for k in dictionary.keys():
+    #print(k)
+
+#for v in dictionary.values():
+    #print(v)
+
+
+### Writing a Python function to retrieve all companies in a specific activity sector (NAF code)
+#def print_info_data(dictionary):
+
+
 
 ##############################
 ### Main body of the script
