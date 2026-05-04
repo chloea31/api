@@ -38,8 +38,11 @@ url = 'https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/NM_021803.4'
 
 # '?': after, there are parameters.
 
-r = requests.get(url, headers = headers)
-print(r.json())
+#r = requests.get(url, headers = headers)
+#print(r.json())
+
+
+### Explanations
 
 # Download a genome and then store it in a file
 # When I need data from the API:
@@ -62,9 +65,18 @@ print(r.json())
 # Ex: If we want to get the temperature of the day: storing it on the disk for 10 years is not useful.
 # Information updated regularly => No need to store it on the disk.
 
-#def info_gene(siren): # The definition of a function often includes a list of parameters. 
+
+# Write a function to retrieve information about genomic data from an accession number or a gene identifier using REST API
+def info_accession(list_accession_nb): # The definition of a function often includes a list of parameters. 
     # These a always VARIABLES, which will receive their value when the function will be called.
 
+    print(list_accession_nb)
+    url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/" + list_accession_nb
+    r = requests.get(url, headers = headers)
+    dictionary = r.json()
+    return dictionary
+print(info_accession("NM_021803.4"))
+#print((info_accession(["NP_068575.1", "NP_851564.1"])))
 
 ##############################
 ### Main body of the script
