@@ -73,10 +73,21 @@ def info_accession(list_accession_nb): # The definition of a function often incl
 
     print(list_accession_nb)
     url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/"
-    result = ",".join(list_accession_nb)
-    url_encoded = urllib.parse.urlencode(result)
-    r = requests.get(url_encoded, headers = headers)
+    #result = ",".join(list_accession_nb)
+    data = {"accession 1": list_accession_nb[0], "accession 2": list_accession_nb[1]}
+    url_encoded = urllib.parse.urlencode(data)
+    print(url_encoded)
+    url_final = url + url_encoded
+    print(f"url final: {url_final}")
+    r = requests.get(url_final, headers = headers)
     dictionary = r.json()
+
+    for accession in list_accession_nb:
+        url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/" + accession
+        print(url)
+        r = requests.get(url, headers = headers)
+        dictionary = r.json()
+        print(dictionary)
     return dictionary
 #print(info_accession("NM_021803.4"))
 print((info_accession(["NP_068575.1", "NP_851564.1"])))
@@ -84,12 +95,12 @@ print((info_accession(["NP_068575.1", "NP_851564.1"])))
 def info_gene(gene_id): 
     # provide an integer (cf. NCBI REST API documentation:https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/rest-api/#)
 
-    print(gene_id)
+    #print(gene_id)
     url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/id/" + gene_id
     r = requests.get(url, headers = headers)
     dictionary = r.json()
     return dictionary
-dictionary = info_gene("2")
+#dictionary = info_gene("2")
 
 #for k in dictionary.keys():
     #print(k)
@@ -97,9 +108,6 @@ dictionary = info_gene("2")
 #for v in dictionary.values():
     #print(v)
 
-
-### Writing a Python function to retrieve all companies in a specific activity sector (NAF code)
-#def print_info_data(dictionary):
 
 
 
