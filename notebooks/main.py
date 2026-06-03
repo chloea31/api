@@ -95,10 +95,11 @@ def info_accession(list_accession_nb): # The definition of a function often incl
 #print(info_accession("NM_021803.4"))
 #print((info_accession(["NP_068575.1", "NP_851564.1"])))
 
+
 def info_gene(gene_id): 
     # provide an integer (cf. NCBI REST API documentation:https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/rest-api/#)
 
-    #print(gene_id)
+    print(gene_id)
     url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/id/" + gene_id
     print(url)
     r = requests.get(url, headers = headers)
@@ -106,11 +107,16 @@ def info_gene(gene_id):
     print(dictionary)
     for k in dictionary.keys():
         print(k)
+    for k, v in dictionary.items():
+        print(v)
+    for list_value in dictionary["reports"]:
+        print(list_value)
+        for element in list_value:
+            print(element)
+        print(list_value["gene"])
     return dictionary
 dictionary = info_gene("2")
-
-
-
+    
 
 ##############################
 ### Main body of the script
