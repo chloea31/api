@@ -113,7 +113,9 @@ def info_gene(gene_id):
         print(list_value)
         for element in list_value:
             print(element)
-        print(list_value["gene"])
+        print(list_value["gene"]) # returns a dictionary
+        for k, v in list_value["gene"].items():
+            print(k)
     return dictionary
 dictionary = info_gene("2")
     
