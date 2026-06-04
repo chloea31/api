@@ -67,6 +67,22 @@ url = 'https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/NM_021803.4'
 # Information updated regularly => No need to store it on the disk.
 
 
+# Programing: The data are organized as objects.
+# Ex: If genes A and B are totally different, it may be difficult to organize them.
+# What is an object ?
+# Object = instance of a class
+# => What is a class ?
+# Class = schéma/model of an object which defines the expected attributes in these objects
+# Ex: Insurance contracts:
+# Class = Insurance
+# 3 attributes: broken glass (int), theft/vandalism (option: bool), price (float)
+# We instanciate 2 "Insurance" objects:
+# 1) Perfect Insurance object: broken glass = 100%, theft/vandalism = yes, price = 0€
+# 2) Third-part-cover Insurance object: broken glass = 100%, theft/vandalism = no, price = 200€ 
+# => Create a class in Python which contains the attributes we have in the API
+# => The dictionary returned by the API will be converted into object of the class 
+
+
 # Write a function to retrieve information about genomic data from an accession number or a gene identifier using REST API
 def info_accession(list_accession_nb): # The definition of a function often includes a list of parameters. 
     # These a always VARIABLES, which will receive their value when the function will be called.
@@ -96,6 +112,40 @@ def info_accession(list_accession_nb): # The definition of a function often incl
 #print((info_accession(["NP_068575.1", "NP_851564.1"])))
 
 
+# Define a function according to: inputs, outputs, and name of the function
+# def get_gene_accession(accession): # input = 1 accession
+#     url = "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/" + accession
+#     print(url)
+#     r = requests.get(url, headers = headers)
+#     dictionary = r.json()
+#     print(dictionary)
+#     return dictionary # returns 1 accession
+# We understand what the function does, its input (1 accession) and the corresponding output 
+# (1 accession is returned and information of the accession)
+# Usually, 1 API route = 1 function
+
+
+def get_gene_accessions(accessions): # "s" if we pass a list of accessions; input = list of accessions
+    result = ",".join(accessions)
+    url = f"https://api.ncbi.nlm.nih.gov/datasets/v2/gene/accession/{result}/dataset_report"
+    r = requests.get(url, headers = headers)
+    if r.status_code == 200:
+        dictionary = r.json()
+        print(dictionary)
+        return dictionary["reports"] # returns a real list of accessions
+    else:
+        return [] # keep in mind that we return a list of accessions
+print(get_gene_accessions(["NP_068575.1", "NP_851564.1"]))
+
+
+def get_gene_accession(accession):
+    res = get_gene_accessions([accession]) # contains the list of information of the accession we wrote as parameter
+    if res: # if res says that "if the list is not empty" (did I retrieve my element?) 
+        return res[0] # returns 1 object accession
+    else: 
+        return None 
+
+
 def info_gene(gene_id): 
     # provide an integer (cf. NCBI REST API documentation:https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/rest-api/#)
 
@@ -117,8 +167,12 @@ def info_gene(gene_id):
         for k, v in list_value["gene"].items():
             print(k)
     return dictionary
-dictionary = info_gene("2")
+#dictionary = info_gene("2")
     
+
+
+
+
 
 ##############################
 ### Main body of the script
