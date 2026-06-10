@@ -135,7 +135,7 @@ def get_gene_accessions(accessions): # "s" if we pass a list of accessions; inpu
         return dictionary["reports"] # returns a real list of accessions
     else:
         return [] # keep in mind that we return a list of accessions
-print(get_gene_accessions(["NP_068575.1", "NP_851564.1"]))
+#print(get_gene_accessions(["NP_068575.1", "NP_851564.1"]))
 
 
 def get_gene_accession(accession):
@@ -144,6 +144,18 @@ def get_gene_accession(accession):
         return res[0] # returns 1 object accession
     else: 
         return None 
+
+
+def get_sequence_assemblies(accession): # intput = string
+    url = f"https://api.ncbi.nlm.nih.gov/datasets/v2/genome/sequence_accession/{accession}/sequence_assemblies"
+    r = requests.get(url, headers = headers)
+    if r.status_code == 200:
+        dictionary = r.json()
+        print(dictionary)
+        return dictionary["accessions"] # output: list of accessions
+    else:
+        return []
+print(get_sequence_assemblies("NC_000001.11"))
 
 
 def info_gene(gene_id): 
