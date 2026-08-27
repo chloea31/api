@@ -50,7 +50,8 @@ Then, close and re-open your terminal window and run ```which mamba``` to see if
 
 [Environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment)
 
-Run ```conda activate env_api``` to activate the environment.
+Please run the following command-line to install the conda environment: ```conda env create -f myenv.yml```
+Please run ```conda activate env_api``` to activate the environment.
 
 
 <a name="usage"></a>
@@ -77,6 +78,8 @@ This project is developed by Chloé Aujoulat.
 <a name="tutorials"></a>
 
 ### Tutorials
+
+- [what_is_a_url](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL) 
 
 <a name="articles"></a>
 
