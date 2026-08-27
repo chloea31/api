@@ -28,7 +28,9 @@ Examples:
 
 3. Software user interface (windows, buttons, drop-down list, ...)
 
-![alt text](2026_04_23_api_definition.jpg)
+![alt text](2026_08_27_api_definition_page-0001.jpg)
+![alt text](2026_08_27_api_definition_page-0002.jpg)
+![alt text](2026_08_27_api_definition_page-0003.jpg)
 
 <a name="req"></a> 
 
