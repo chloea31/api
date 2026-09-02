@@ -28,9 +28,9 @@ Examples:
 
 3. Software user interface (windows, buttons, drop-down list, ...)
 
-![alt text](2026_08_27_api_definition_page-0001.jpg)
-![alt text](2026_08_27_api_definition_page-0002.jpg)
-![alt text](2026_08_27_api_definition_page-0003.jpg)
+![alt text](2026_08_31_api_definition_page-0001.jpg)
+![alt text](2026_08_31_api_definition_page-0002.jpg)
+![alt text](2026_08_31_api_definition_page-0003.jpg)
 
 <a name="req"></a> 
 
@@ -79,7 +79,10 @@ This project is developed by Chloé Aujoulat.
 
 ### Tutorials
 
-- [what_is_a_url](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL) 
+- [ncbi_documentation](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/)
+- [what_is_a_url](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)
+- [ncbi_api](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/)
+- [ncbi_datasets_rest_api](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/rest-api/#) 
 
 <a name="articles"></a>
 
